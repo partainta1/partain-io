@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARTAIN I/O</title>
+    <style>
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .io-blue {
+            color: #007BFF; /* Blue slash */
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        .values {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .value {
+            opacity: 0;
+        }
+
+        /* Staggered fade-in animation */
+        .value:nth-child(1) {
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 1s;
+        }
+        .value:nth-child(2) {
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 1.5s;
+        }
+        .value:nth-child(3) {
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 2s;
+        }
+        .value:nth-child(4) {
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 2.5s;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 12px;  /* Reduced font size */
+            color: #ccc;
+            line-height: 1.6;
+            animation: fadeIn 3s ease-out forwards;
+            animation-delay: 3s;
+            opacity: 0;
+        }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+            margin-top: 60px;
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .values {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h2>PARTAIN I<span class="io-blue">/</span>O</h2>
+    <p>Expert Confidential Guidance for Discrete Clients</p>
+    <div class="values">
+        <span class="value">Passion</span>
+        <span class="value">Expertise</span>
+        <span class="value">Curiosity</span>
+        <span class="value">Results</span>
+    </div>
+
+    <div class="contact-info">
+        <p>Exclusive client base: Invitation Only</p>
+    </div>
+</div>
+
+<footer>
+    &copy; 2025 PARTAIN I/O. All rights reserved.
+</footer>
+
+</body>
+</html>
