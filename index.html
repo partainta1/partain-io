@@ -57,7 +57,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #161815; --fg: #ECEDE8; --muted: #A3A89F; --rule: #2E322C; --accent: #8FBF9F; --photo: #22251F;
+    --bg: #161815; --fg: #ECEDE8; --muted: #A3A89F; --rule: #34382F; --accent: #7FAE90; --photo: #22251F;
     color-scheme: dark;
   }
 }
@@ -74,36 +74,40 @@ a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--a
 a:hover { color: var(--accent); }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 h1, h2 { font-family: var(--serif); font-weight: 400; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
-h1 { font-size: clamp(40px, 7vw, 60px); line-height: 1.02; }
+h1 { font-size: clamp(36px, 10vw, 60px); line-height: 1.02; }
 h2 { font-size: 30px; line-height: 1.15; margin-bottom: 20px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 p { margin: 0 0 18px; max-width: 62ch; }
-.hero { padding-block: 56px 40px; display: grid; grid-template-columns: minmax(0, 1fr) 200px; gap: 40px; align-items: start; }
+.hero { padding-block: 72px 48px; display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 48px; align-items: start; }
+.hero > div { min-width: 0; }
 .hero .claim { font-family: var(--serif); font-size: clamp(21px, 2.6vw, 26px); line-height: 1.35; margin: 22px 0 18px; }
-.hero .where { color: var(--muted); font-size: 15px; margin: 0; }
-.photo { aspect-ratio: 4 / 5; width: 100%; max-width: 100%; height: auto; object-fit: cover; display: block; background: var(--photo); margin-top: 10px; }
-section { padding-block: 36px; border-top: 1px solid var(--rule); }
-.num { font-family: var(--serif); font-size: 1.35em; line-height: 1; font-weight: 500; color: var(--accent); font-variant-numeric: tabular-nums; }
-.rule { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--muted); }
+.hero .where { color: var(--muted); font-size: 15px; margin: 0; max-width: none; }
+.hero .rule { margin: 18px 0 0; }
+.photo { aspect-ratio: 3 / 4; width: 100%; max-width: 100%; height: auto; object-fit: cover; display: block; background: var(--photo); margin-top: 6px; box-shadow: inset 0 0 0 1px rgb(0 0 0 / .06); }
+section { padding-block: 44px 40px; border-top: 1px solid var(--rule); }
+section:not(:first-of-type) { border-top-color: color-mix(in srgb, var(--rule) 60%, transparent); }
+.num { font-family: var(--serif); font-size: 1.12em; line-height: 0; position: relative; top: 0.02em; font-weight: 500; color: var(--accent); }
+.rule { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--muted); max-width: 40ch; }
 ul.plain { list-style: none; padding: 0; margin: 0; }
 ul.plain li { padding: 14px 0; border-top: 1px solid var(--rule); }
 ul.plain li:first-child { border-top: 0; padding-top: 0; }
-.row { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; align-items: baseline; }
-.row .yrs { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.row { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 20px; align-items: baseline; }
+.career ul.plain li { border-top: 0; padding: 11px 0; }
+.row .yrs { font-family: var(--serif); color: var(--muted); font-size: 15px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .row .what { font-weight: 500; }
-.row .note { color: var(--muted); font-size: 15px; margin: 2px 0 0; }
+.row .note { color: var(--muted); font-size: 15px; margin: 2px 0 0; max-width: 58ch; }
 .work li { padding: 16px 0; }
 .work .t { font-weight: 500; }
-.work .d { color: var(--muted); font-size: 15px; margin: 2px 0 0; }
+.work .d { color: var(--muted); font-size: 15px; margin: 2px 0 0; max-width: 58ch; }
 .edu { margin-top: 22px; color: var(--muted); font-size: 15px; }
 .contact p { font-size: 19px; }
-.email { font-family: var(--serif); font-size: 26px; user-select: all; overflow-wrap: anywhere; }
-.copy { font: 500 13px/1 var(--sans); background: none; border: 1px solid var(--muted); color: var(--muted); padding: 7px 10px; border-radius: 3px; cursor: pointer; margin-left: 10px; vertical-align: middle; }
-.copy:hover { border-color: var(--accent); color: var(--fg); }
+.email { font-family: var(--serif); font-size: 24px; text-decoration-thickness: 1px; overflow-wrap: anywhere; }
+.copy { font: 400 15px/1 var(--sans); background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; cursor: pointer; margin-left: 14px; vertical-align: baseline; }
+.copy:hover { color: var(--fg); }
 footer { color: var(--muted); font-size: 13px; padding-top: 24px; border-top: 1px solid var(--rule); }
 @media (max-width: 640px) {
   .hero { grid-template-columns: 1fr; gap: 24px; padding-top: 36px; }
-  .photo { max-width: 160px; margin-top: 0; order: -1; }
+  .photo { max-width: 200px; margin-top: 4px; }
   .row { grid-template-columns: 1fr; gap: 2px; }
 }
 </style>
@@ -115,30 +119,21 @@ footer { color: var(--muted); font-size: 13px; padding-top: 24px; border-top: 1p
     <div>
       <h1>Troy Partain</h1>
       <p class="claim">I lead enterprise pre-sales teams in observability and developer tooling, and I build the demos, integrations and AI tooling they win with.</p>
-      <p class="where">Sales &amp; solutions engineering leader · Phoenix, Arizona · <a href="https://www.linkedin.com/in/troypartain">LinkedIn</a></p>
+      <p class="where">Sales &amp; solutions engineering leader<br>Phoenix, Arizona · <a href="https://www.linkedin.com/in/troypartain">LinkedIn</a></p>
+      <p class="rule">I work by one rule: if you oppose, you must propose.</p>
     </div>
-    <img class="photo" src="/img/troy-400.jpg" srcset="/img/troy-400.jpg 400w, /img/troy-800.jpg 800w" sizes="(max-width: 640px) 160px, 200px" width="400" height="500" fetchpriority="high" decoding="async" alt="Troy Partain at the Dobbins Lookout on South Mountain, Phoenix">
+    <img class="photo" src="/img/troy-400.jpg" srcset="/img/troy-400.jpg 400w, /img/troy-800.jpg 800w" sizes="(max-width: 640px) 200px, 240px" width="400" height="500" style="object-position: 50% 20%" fetchpriority="high" decoding="async" alt="Troy Partain at the Dobbins Lookout on South Mountain, Phoenix">
   </header>
 
   <section>
     <h2 class="sr">About</h2>
-    <p>I've spent fifteen years selling observability and developer tooling into large enterprises. At <a href="https://www.appdynamics.com">Cisco AppDynamics</a> I led a team of <span class="num">11</span> sales engineers across global partner, Canadian field and US commercial, and my team supported the global partner revenue number with WWT, Accenture, NTT, CDW and others. Over three years, two reorganizations and the Splunk integration, I hired <span class="num">4</span>, promoted <span class="num">6</span> and lost one to resignation, and sat on the interview panel for dozens of sales engineer and sales hires outside my own team. Partners earned <span class="num">944</span> advanced certifications in a year, and sales became <span class="num">97%</span> partner-involved.</p>
-    <p>Before that, at AppDynamics, I was the only sales engineer on a <span class="num">$15M+</span> win, at the time the third-largest deal in the company's history, and reached 325% of quota and President's Club. At Splunk I was the <span class="num">#2</span>-ranked sales engineer globally in Observability in my first year.</p>
-    <p>Today I'm in pre-sales at <a href="https://gradle.com">Gradle</a>, selling Develocity to enterprise engineering organizations. I chose it deliberately: a startup building an enterprise sales motion in a market where AI is creating real pain, a product I believe in, and a sales engineering function that needed building. That is work my background fits, and I grow as the team does.</p>
-    <p class="rule">I work by one rule: if you oppose, you must propose.</p>
+    <p>I've spent fifteen years selling observability and developer tooling into large enterprises. At AppDynamics I was the only sales engineer on a <span class="num">$15M+</span> win, at the time the third-largest deal in the company's history, and reached 325% of quota and President's Club. At Splunk I was the <span class="num">#2</span>-ranked sales engineer globally in Observability in my first year.</p>
+    <p>At <a href="https://www.appdynamics.com">Cisco AppDynamics</a> I led a team of <span class="num">11</span> sales engineers across global partner, Canadian field and US commercial, and my team supported the global partner revenue number with WWT, Accenture, NTT, CDW and others. Partners earned <span class="num">944</span> advanced certifications in a year, and sales became <span class="num">97%</span> partner-involved.</p>
+    <p>Over three years, two reorganizations and the Splunk integration, I hired 4, promoted 6 and lost one to resignation, and sat on the interview panel for dozens of sales engineer and sales hires outside my own team.</p>
+    <p>Today I'm in pre-sales at <a href="https://gradle.com">Gradle</a>, selling Develocity to enterprise engineering organizations, where the sales engineering function needed building.</p>
   </section>
 
-  <section class="work">
-    <h2>Things I've built</h2>
-    <ul class="plain">
-      <li><div class="t">A discovery and value-quantification skill for the Gradle pre-sales team</div><p class="d">About a dozen sales and solutions engineers use it to run deals the same way, faster, and put a number on the value.</p></li>
-      <li><div class="t">The enterprise pre-sales kit for Develocity</div><p class="d">Demos, decks, ROI calculator and enablement content, built as one of two sales engineers taking new products to market, and presented on public webinars. Hands-on in customer CI and Kubernetes environments, including deploying Develocity's MCP server and connecting it to AI assistants.</p></li>
-      <li><div class="t">A self-service booking portal for the AppDynamics SE org</div><p class="d">Account ownership, demo availability, client revenue and direct SE booking for internal teams. Routine requests to senior engineers fell from several hundred to a handful, a 92% drop, and that time went into weekly demos and account planning with sales.</p></li>
-      <li><div class="t">The qualification, PoC and technical validation process at AppDynamics</div><p class="d">MEDDICC-based, with defined success criteria, adopted across the sales engineering team.</p></li>
-    </ul>
-  </section>
-
-  <section>
+  <section class="career">
     <h2>Career</h2>
     <ul class="plain">
       <li class="row"><span class="yrs">2026 –</span><div><div class="what">Pre-Sales Engineer, Gradle (Develocity)</div><p class="note">One of two sales engineers taking new products to the enterprise market.</p></div></li>
@@ -152,10 +147,19 @@ footer { color: var(--muted); font-size: 13px; padding-top: 24px; border-top: 1p
     <p class="edu">MS, Medical Informatics, Northwestern · MBA, Rockhurst · CKA · CompTIA Security+</p>
   </section>
 
+  <section class="work">
+    <h2>Things I've built</h2>
+    <ul class="plain">
+      <li><div class="t">A discovery and value-quantification skill for the Gradle pre-sales team</div><p class="d">About a dozen sales and solutions engineers use it to run deals the same way, faster, and put a number on the value.</p></li>
+      <li><div class="t">The enterprise pre-sales kit for Develocity</div><p class="d">Demos, decks, ROI calculator and enablement content, built as one of two sales engineers taking new products to market, and presented on public webinars. Hands-on in customer CI and Kubernetes environments, including deploying Develocity's MCP server and connecting it to AI assistants.</p></li>
+      <li><div class="t">A self-service booking portal for the AppDynamics SE org</div><p class="d">Account ownership, demo availability, client revenue and direct SE booking for internal teams. Routine requests to senior engineers fell from several hundred to a handful, a 92% drop, and that time went into weekly demos and account planning with sales.</p></li>
+      <li><div class="t">The qualification, PoC and technical validation process at AppDynamics</div><p class="d">MEDDICC-based, with defined success criteria, adopted across the sales engineering team.</p></li>
+    </ul>
+  </section>
+
   <section class="contact">
     <h2>Get in touch</h2>
-    <p><span class="email" id="email">troy@partain.io</span><button class="copy" id="copy" type="button" aria-label="Copy email address" aria-live="polite">Copy</button></p>
-    <p>Or on <a href="https://www.linkedin.com/in/troypartain">LinkedIn</a>.</p>
+    <p><a class="email" id="email" href="mailto:troy@partain.io">troy@partain.io</a><button class="copy" id="copy" type="button" aria-label="Copy email address" aria-live="polite">Copy</button></p>
   </section>
 </main>
 
