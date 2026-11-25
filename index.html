@@ -1,164 +1,180 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PARTAIN I/O</title>
-  <meta name="description" content="PARTAIN I/O — applied AI and platform engineering. A boutique practice built on depth, rigor, and judgment. By selection only." />
-
-  <!-- Favicon: inline SVG, the blue slash mark -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050506'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='22' font-weight='700' text-anchor='middle' fill='%233d8bff'%3E/%3C/text%3E%3C/svg%3E" />
-
-  <!-- Open Graph / social share preview -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="PARTAIN I/O" />
-  <meta property="og:title" content="PARTAIN I/O" />
-  <meta property="og:description" content="Applied AI and platform engineering. A boutique practice built on depth, rigor, and judgment. By selection only." />
-  <meta property="og:url" content="https://www.partain.io/" />
-  <meta property="og:image" content="https://www.partain.io/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="PARTAIN I/O" />
-  <meta name="twitter:description" content="Applied AI and platform engineering. A boutique practice built on depth, rigor, and judgment. By selection only." />
-  <meta name="twitter:image" content="https://www.partain.io/og-image.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --bg: #050506;
-      --fg: #f4f4f2;
-      --muted: #9a9a9f;
-      --faint: #616167;
-      --blue: #3d8bff;
-    }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--fg);
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2.5rem 1.5rem;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* Breathing aurora glow behind the content */
-    .aurora {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(42rem 30rem at 50% -8%, rgba(61,139,255,0.16), transparent 60%),
-        radial-gradient(30rem 22rem at 82% 12%, rgba(61,139,255,0.08), transparent 60%);
-      animation: breathe 11s ease-in-out infinite;
-    }
-    @keyframes breathe {
-      0%, 100% { opacity: 0.75; transform: translateY(0); }
-      50%      { opacity: 1;    transform: translateY(1.5rem); }
-    }
-
-    main {
-      position: relative;
-      z-index: 1;
-      max-width: 660px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .reveal { opacity: 0; transform: translateY(14px); animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
-    .d1 { animation-delay: 0.05s; }
-    .d2 { animation-delay: 0.20s; }
-    .d3 { animation-delay: 0.35s; }
-    .d4 { animation-delay: 0.50s; }
-    .d5 { animation-delay: 0.65s; }
-    .d6 { animation-delay: 0.80s; }
-    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
-
-    .wordmark {
-      font-family: "Space Grotesk", monospace;
-      font-size: clamp(2.6rem, 9vw, 5rem);
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      margin: 0 0 1.75rem;
-      line-height: 1;
-    }
-    .wordmark .slash {
-      color: var(--blue);
-      text-shadow: 0 0 26px rgba(61,139,255,0.55);
-      animation: pulse 4.5s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { text-shadow: 0 0 22px rgba(61,139,255,0.40); }
-      50%      { text-shadow: 0 0 34px rgba(61,139,255,0.75); }
-    }
-
-    .headline {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(1.25rem, 3vw, 1.75rem);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      margin: 0 auto 1rem;
-      max-width: 22ch;
-    }
-    .headline .accent { color: var(--blue); }
-
-    .intro { font-size: 1.02rem; line-height: 1.6; color: var(--muted); margin: 0 auto 2.75rem; max-width: 34rem; }
-
-    .values { display: flex; flex-wrap: wrap; gap: 2.25rem; justify-content: center; margin: 0 0 3rem; padding: 0; list-style: none; }
-    .values li { font-size: 0.76rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); }
-
-    .invite {
-      display: inline-block;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--fg);
-      border: 1px solid var(--blue);
-      border-radius: 999px;
-      padding: 0.5rem 1.25rem;
-      margin: 0 0 2.5rem;
-    }
-
-    footer { display: flex; flex-direction: column; align-items: center; }
-    .copyright { font-size: 0.75rem; color: var(--faint); margin: 0; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .aurora, .wordmark .slash { animation: none; }
-      .reveal { opacity: 1; transform: none; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Troy Partain</title>
+<meta name="description" content="Troy Partain is a sales and solutions engineering leader in Phoenix. Fifteen years selling observability and developer tooling to the enterprise; led an 11-person SE team at Cisco AppDynamics; now in pre-sales at Gradle.">
+<link rel="canonical" href="https://www.partain.io/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Troy Partain">
+<meta property="og:title" content="Troy Partain">
+<meta property="og:description" content="Sales engineering leader. Observability and developer tooling, enterprise pre-sales, hands-on with AI.">
+<meta property="og:url" content="https://www.partain.io/">
+<meta property="og:image" content="https://www.partain.io/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Portrait of Troy Partain">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Troy Partain">
+<meta name="twitter:description" content="Sales engineering leader. Observability and developer tooling, enterprise pre-sales, hands-on with AI.">
+<meta name="twitter:image" content="https://www.partain.io/img/og.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Troy Partain",
+  "url": "https://www.partain.io/",
+  "image": "https://www.partain.io/img/troy-800.jpg",
+  "jobTitle": "Sales & Solutions Engineering Leader",
+  "worksFor": { "@type": "Organization", "name": "Gradle" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Phoenix", "addressRegion": "AZ", "addressCountry": "US" },
+  "sameAs": ["https://www.linkedin.com/in/troypartain"],
+  "email": "mailto:troy@partain.io",
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Northwestern University" },
+    { "@type": "CollegeOrUniversity", "name": "Rockhurst University" }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one left-aligned reading column, hairline rules between sections, numbers set in prose. */
+:root {
+  --bg: #FBFBF9;
+  --fg: #1B1D1B;
+  --muted: #5F655F;
+  --rule: #D9DCD6;
+  --accent: #2F5A3F;
+  --photo: #E6E8E3;
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161815; --fg: #ECEDE8; --muted: #A3A89F; --rule: #34382F; --accent: #7FAE90; --photo: #22251F;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font: 400 17px/1.65 var(--sans);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 64px;
+}
+.col { max-width: 680px; margin: 0 auto; }
+a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2 { font-family: var(--serif); font-weight: 400; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(36px, 10vw, 60px); line-height: 1.02; }
+h2 { font-size: 30px; line-height: 1.15; margin-bottom: 20px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+p { margin: 0 0 18px; max-width: 62ch; }
+.hero { padding-block: 72px 48px; display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 48px; align-items: start; }
+.hero > div { min-width: 0; }
+.hero .claim { font-family: var(--serif); font-size: clamp(21px, 2.6vw, 26px); line-height: 1.35; margin: 22px 0 18px; }
+.hero .where { color: var(--muted); font-size: 15px; margin: 0; max-width: none; }
+.hero .rule { margin: 18px 0 0; }
+.photo { aspect-ratio: 3 / 4; width: 100%; max-width: 100%; height: auto; object-fit: cover; display: block; background: var(--photo); margin-top: 6px; box-shadow: inset 0 0 0 1px rgb(0 0 0 / .06); }
+section { padding-block: 44px 40px; border-top: 1px solid var(--rule); }
+section:not(:first-of-type) { border-top-color: color-mix(in srgb, var(--rule) 60%, transparent); }
+.num { font-family: var(--serif); font-size: 1.12em; line-height: 0; position: relative; top: 0.02em; font-weight: 500; color: var(--accent); }
+.rule { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--muted); max-width: 40ch; }
+ul.plain { list-style: none; padding: 0; margin: 0; }
+ul.plain li { padding: 14px 0; border-top: 1px solid var(--rule); }
+ul.plain li:first-child { border-top: 0; padding-top: 0; }
+.row { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 20px; align-items: baseline; }
+.career ul.plain li { border-top: 0; padding: 11px 0; }
+.row .yrs { font-family: var(--serif); color: var(--muted); font-size: 15px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.row .what { font-weight: 500; }
+.row .note { color: var(--muted); font-size: 15px; margin: 2px 0 0; max-width: 58ch; }
+.work li { padding: 16px 0; }
+.work .t { font-weight: 500; }
+.work .d { color: var(--muted); font-size: 15px; margin: 2px 0 0; max-width: 58ch; }
+.edu { margin-top: 22px; color: var(--muted); font-size: 15px; }
+.contact p { font-size: 19px; }
+.email { font-family: var(--serif); font-size: 24px; text-decoration-thickness: 1px; overflow-wrap: anywhere; }
+.copy { font: 400 15px/1 var(--sans); background: none; border: 0; padding: 0; color: var(--muted); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; cursor: pointer; margin-left: 14px; vertical-align: baseline; }
+.copy:hover { color: var(--fg); }
+footer { color: var(--muted); font-size: 13px; padding-top: 24px; border-top: 1px solid var(--rule); }
+@media (max-width: 640px) {
+  .hero { grid-template-columns: 1fr; gap: 24px; padding-top: 36px; }
+  .photo { max-width: 200px; margin-top: 4px; }
+  .row { grid-template-columns: 1fr; gap: 2px; }
+}
+</style>
 </head>
 <body>
-  <div class="aurora" aria-hidden="true"></div>
 
-  <main>
-    <h1 class="wordmark reveal d1">PARTAIN&nbsp;I<span class="slash">/</span>O</h1>
+<main class="col">
+  <header class="hero">
+    <div>
+      <h1>Troy Partain</h1>
+      <p class="claim">I lead enterprise pre-sales teams in observability and developer tooling, and I build the demos, integrations and AI tooling they win with.</p>
+      <p class="where">Sales engineering leader<br>Phoenix, Arizona · <a href="https://www.linkedin.com/in/troypartain">LinkedIn</a></p>
+      <p class="rule">I work by one rule: if you oppose, you must propose.</p>
+    </div>
+    <img class="photo" src="/img/troy-400.jpg" srcset="/img/troy-400.jpg 400w, /img/troy-800.jpg 800w" sizes="(max-width: 640px) 200px, 240px" width="400" height="500" style="object-position: 50% 20%" fetchpriority="high" decoding="async" alt="Portrait of Troy Partain">
+  </header>
 
-    <p class="headline reveal d2">Applied AI and <span class="accent">platform engineering.</span></p>
-    <p class="intro reveal d2">A boutique practice built on depth, rigor, and judgment.</p>
+  <section>
+    <h2 class="sr">About</h2>
+    <p>I've spent fifteen years selling observability and developer tooling into large enterprises. At AppDynamics I was the only sales engineer on a <span class="num">$15M+</span> win, at the time the third-largest deal in the company's history, and reached 325% of quota and President's Club. At Splunk I was the <span class="num">#2</span>-ranked sales engineer globally in Observability in my first year.</p>
+    <p>At <a href="https://www.appdynamics.com">Cisco AppDynamics</a> I led a team of <span class="num">11</span> sales engineers across the US and Canada, in global partner, Canadian field and US commercial motions, supported partner teams globally, and my team supported the global partner revenue number with WWT, Accenture, NTT, CDW and others, with sales engineers aligned to <span class="num">37</span> partner account managers.</p>
+    <p>Over three years, two reorganizations and the Splunk integration, I hired 4, promoted 6 and lost one to resignation, mentored front-line managers, and sat on the interview panel for dozens of sales engineer and sales hires outside my own team.</p>
+    <p>Today I'm in pre-sales at <a href="https://gradle.com">Gradle</a>, selling Develocity, the commercial platform built on the open source Gradle Build Tool, to engineering organizations already running Gradle in production, where the sales engineering function needed building.</p>
+  </section>
 
-    <ul class="values reveal d3">
-      <li>Precision</li>
-      <li>Velocity</li>
-      <li>Innovation</li>
-      <li>Results</li>
+  <section class="career">
+    <h2>Career</h2>
+    <ul class="plain">
+      <li class="row"><span class="yrs">2026 –</span><div><div class="what">Pre-Sales Engineer, Gradle (Develocity)</div><p class="note">One of two sales engineers taking new products to the enterprise market.</p></div></li>
+      <li class="row"><span class="yrs">2024 – 2026</span><div><div class="what">Sabbatical</div><p class="note">Circumnavigated the globe, lived a year in Bangkok and Manila, earned CKA and CompTIA Security+.</p></div></li>
+      <li class="row"><span class="yrs">2021 – 2024</span><div><div class="what">Senior Manager, Sales Engineering, Cisco AppDynamics</div><p class="note">Recruited back from Splunk. Reported to the VP of Channel Sales.</p></div></li>
+      <li class="row"><span class="yrs">2020 – 2021</span><div><div class="what">Senior Sales Engineer, Splunk</div><p class="note">Splunk Observability MVP, 2021. Lead observability engineer on $18M closed in 12 months.</p></div></li>
+      <li class="row"><span class="yrs">2017 – 2020</span><div><div class="what">Advisory Sales Engineer, AppDynamics</div><p class="note">President's Club, 2018.</p></div></li>
+      <li class="row"><span class="yrs">2011 – 2017</span><div><div class="what">Senior Sales Engineer, Aternity (acquired by Riverbed)</div><p class="note">Fourth SE at the startup; built the pre-sales motion for the western US and Latin America. 93% PoC-to-purchase rate. SE of the Year, 2013 and 2016.</p></div></li>
+      <li class="row"><span class="yrs">2006 – 2011</span><div><div class="what">Principal Architect, Perot Systems</div><p class="note">Severity 1 response and root-cause analysis across 75+ hospitals.</p></div></li>
     </ul>
+    <p class="edu">MS, Medical Informatics, Northwestern · MBA, Rockhurst · BS, Telecommunications Management (Network Administration), DeVry · CKA · CompTIA Security+</p>
+  </section>
 
-    <p class="invite reveal d4">By selection only</p>
+  <section class="work">
+    <h2>What I've changed</h2>
+    <ul class="plain">
+      <li><div class="t">Turned a direct-sales SE organization into a partner-led one.</div><p class="d">At Cisco AppDynamics I built the partner enablement and technical readiness programs. Partners earned <span class="num">944</span> advanced certifications in a year, and sales became <span class="num">97%</span> partner-involved.</p></li>
+      <li><div class="t">Rebuilt one team and absorbed another with no new headcount.</div><p class="d">After a workforce transition I rebuilt the Canadian sales engineering team, then took on the US commercial team with no added resources, without dropping coverage on either.</p></li>
+      <li><div class="t">Gave senior engineers their time back.</div><p class="d">A self-service portal replaced several hundred routine requests a week with a handful, a <span class="num">92%</span> drop. That time went into weekly demos and account planning with sales.</p></li>
+      <li><div class="t">Set the standard for how the team qualifies and proves value.</div><p class="d">A MEDDICC-based qualification, PoC and technical validation process with defined success criteria, adopted across the sales engineering team. The same discipline produced a <span class="num">93%</span> PoC-to-purchase rate at Aternity.</p></li>
+      <li><div class="t">Shaped the product and the market story.</div><p class="d">Customer and partner input to the AppDynamics roadmap and to the Gartner submissions that kept it in the Magic Quadrant. Hosted multiple marketing webinars and a breakout session at Cisco GSX, the company's global sales event.</p></li>
+      <li><div class="t">Helped take AppDynamics to market through service providers.</div><p class="d">Founding technical member of the managed service provider team, and part of building the MSP, GSP and GSI go-to-market strategy that the partner organization later grew on.</p></li>
+      <li><div class="t">Stood up enterprise pre-sales from two people.</div><p class="d">At Gradle, one of two sales engineers taking new products to market: demos, ROI model, enablement content and public webinars, plus an AI discovery skill that about a dozen sales and solutions engineers now run deals with. Hands-on in customer CI and Kubernetes environments, including deploying Develocity's MCP server and connecting it to AI assistants.</p></li>
+    </ul>
+  </section>
 
-    <footer class="reveal d5">
-      <p class="copyright">&copy; 2026 PARTAIN I/O. All rights reserved.</p>
-    </footer>
-  </main>
+  <section class="contact">
+    <h2>Get in touch</h2>
+    <p><a class="email" id="email" href="mailto:troy@partain.io">troy@partain.io</a><button class="copy" id="copy" type="button" aria-label="Copy email address" aria-live="polite">Copy</button></p>
+  </section>
+</main>
+
+<footer class="col">© 2026 Troy Partain</footer>
+
+<script>
+document.getElementById('copy').addEventListener('click', function () {
+  var btn = this, el = document.getElementById('email');
+  function done(){ btn.textContent = 'Copied'; setTimeout(function(){ btn.textContent = 'Copy'; }, 1800); }
+  function fallback(){ var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected'; }
+  try { navigator.clipboard.writeText(el.textContent).then(done, fallback); } catch (e) { fallback(); }
+});
+</script>
 </body>
 </html>
